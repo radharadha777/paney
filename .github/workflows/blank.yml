@@ -15,8 +15,8 @@ jobs:
       
     - name: Unzip reviactyl.zip
       run: |
-        unzip -q reviactyl.zip -d extracted/
+        unzip -o reviactyl.zip
         echo "File unzipped successfully"
         
     - name: Show extracted files
-      run: ls -la extracted/
+      run: ls
