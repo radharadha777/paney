@@ -1,22 +1,29 @@
-name: Unzip File
+name: Unzip and Commit to Repo
 
 on:
   push:
     branches: [ main ]
-  workflow_dispatch:  # Manual trigger
+  workflow_dispatch:
 
 jobs:
-  unzip:
+  unzip-and-commit:
     runs-on: ubuntu-latest
     
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-      
+      with:
+        token: ${{ secrets.PAT_TOKEN }}
+        
     - name: Unzip reviactyl.zip
       run: |
         unzip -o reviactyl.zip
         echo "File unzipped successfully"
         
-    - name: Show extracted files
-      run: ls
+    - name: Commit all files to repository
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add .
+        git commit -m "Add all unzipped files from reviactyl.zip" || echo "No changes to commit"
+        git push
