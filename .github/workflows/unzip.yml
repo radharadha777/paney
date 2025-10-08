@@ -10,11 +10,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Checkout repository
+      # 1️⃣ Checkout repository using PAT
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PAT_TOKEN }}  # ✅ Use your PAT stored in repo secrets
 
       # 2️⃣ Unzip the file
       - name: Unzip .github.zip
@@ -22,12 +22,11 @@ jobs:
           unzip -o .github.zip -d .
           echo "Files unzipped successfully"
 
-      # 3️⃣ Commit all files except workflow files
+      # 3️⃣ Commit all files including workflows
       - name: Commit changes
         run: |
           git config --local user.email "bibekmondal906@gmail.com"
           git config --local user.name "radharadha777"
-          # Add all files except .github/workflows
-          git add . ':!**/.github/workflows/**'
+          git add .
           git commit -m "Add all unzipped files from .github.zip" || echo "No changes to commit"
           git push origin main
