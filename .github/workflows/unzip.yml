@@ -15,7 +15,7 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}  # ✅ Ye automatically kaam karega
         
-    - name: Unzip reviactyl.zip
+    - name: Unzip .github.zip
       run: |
         unzip -o reviactyl.zip
         echo "File unzipped successfully"
