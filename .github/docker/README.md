@@ -1,4 +1,4 @@
-# Reviactyl - Docker Image
+# Thema Change - Docker Image
 This is a ready to use docker image for the panel.
 
 ## Requirements
