@@ -8,25 +8,26 @@ on:
 jobs:
   unzip-and-commit:
     runs-on: ubuntu-latest
-    permissions:  # ✅ set permissions at job level
-      contents: write
-      workflows: write
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        
-    - name: Unzip .github.zip
-      run: |
-        unzip -o .github.zip
-        echo "File unzipped successfully"
-        
-    - name: Commit all files to repository
-      run: |
-        git config --local user.email "bibekmondal906@gmail.com"
-        git config --local user.name "radharadha777"
-        git add .
-        git commit -m "Add all unzipped files from reviactyl.zip" || echo "No changes to commit"
-        git push
+      # 1️⃣ Checkout repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      # 2️⃣ Unzip the file
+      - name: Unzip .github.zip
+        run: |
+          unzip -o .github.zip -d .
+          echo "Files unzipped successfully"
+
+      # 3️⃣ Commit all files except workflow files
+      - name: Commit changes
+        run: |
+          git config --local user.email "bibekmondal906@gmail.com"
+          git config --local user.name "radharadha777"
+          # Add all files except .github/workflows
+          git add . ':!**/.github/workflows/**'
+          git commit -m "Add all unzipped files from .github.zip" || echo "No changes to commit"
+          git push origin main
