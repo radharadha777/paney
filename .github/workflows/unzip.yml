@@ -5,14 +5,13 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
-permissions:
-  contents: write
-  workflows: write   # ✅ allows updating workflow files
-
 jobs:
   unzip-and-commit:
     runs-on: ubuntu-latest
-    
+    permissions:  # ✅ set permissions at job level
+      contents: write
+      workflows: write
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
