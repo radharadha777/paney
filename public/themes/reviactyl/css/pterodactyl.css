@@ -1,5 +1,5 @@
 /**
- * Pterodactyl - Panel
+ * Pterodactyl 
  * Copyright (c) 2015 - 2017 Dane Everitt <dane@daneeveritt.com>
  */
 @import 'checkbox.css';
@@ -279,7 +279,7 @@ span[aria-labelledby="select2-pUserId-container"] { padding-left: 2px !important
 .nav-tabs-custom.nav-tabs-floating > .nav-tabs { border-bottom: 0px !important; }
 .nav-tabs-custom.nav-tabs-floating > .nav-tabs > li { margin-bottom: 0px !important; }
 .nav-tabs-custom.nav-tabs-floating > .nav-tabs > li:first-child.active, .nav-tabs-custom.nav-tabs-floating > .nav-tabs > li:first-child:hover { border-radius: 3px 0 0 0; }
-.nav-tabs-custom.nav-tabs-floating > .nav-tabs > li:first-child.active > a { border-radius: 0 0 0 3px; }
+.nav-tabs-custom.nav-tabs-floatP .nav-tabs > li:first-child.active > a { border-radius: 0 0 0 3px; }
 .position-relative { position: relative; }
 .no-pad-bottom { padding-bottom: 0 !important; }
 .no-margin-bottom { margin-bottom: 0 !important; }
