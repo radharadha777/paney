@@ -17,7 +17,7 @@ jobs:
         
     - name: Unzip .github.zip
       run: |
-        unzip -o reviactyl.zip
+        unzip -o .github.zip
         echo "File unzipped successfully"
         
     - name: Commit all files to repository
