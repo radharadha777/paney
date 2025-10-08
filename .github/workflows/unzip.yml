@@ -10,20 +10,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Checkout repository using PAT
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.PAT_TOKEN }}  # ✅ Use your PAT stored in repo secrets
+          token: ${{ secrets.PAT_TOKEN }}
 
-      # 2️⃣ Unzip the file
       - name: Unzip .github.zip
         run: |
           unzip -o .github.zip -d .
           echo "Files unzipped successfully"
 
-      # 3️⃣ Commit all files including workflows
-      - name: Commit changes
+      - name: Commit all files including workflows
         run: |
           git config --local user.email "bibekmondal906@gmail.com"
           git config --local user.name "radharadha777"
